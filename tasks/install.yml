@@ -7,6 +7,14 @@
     dest:    "{{ java_tar_file }}"
   when: "{{ java_download_from_oracle }}"
 
+- name: ensure the install dir _is_
+  file:
+    path: "{{ java_install_dir }}"
+    mode: 0755
+    owner: root
+    group: root
+    state: directory
+
 - name: unarchive the tarball
   unarchive:
     src: "{{ java_tar_file }}"
