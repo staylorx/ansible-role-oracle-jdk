@@ -1,0 +1,7 @@
+---
+
+- name: check for version
+  fail: msg="ERROR - 'java_version' is required."
+  when: java_version is not defined
+
+- include: install.yml

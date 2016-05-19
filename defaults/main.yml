@@ -1,0 +1,41 @@
+---
+
+#
+# defaults file for roles/staylorx.oracle-jdk
+#
+java_home: /usr/java/local
+java_install_jce: false
+java_entropy_fix: false
+java_install_dir: /usr/java
+java_remove_download: yes
+# like a safety, set to yes in the play
+java_download_from_oracle: no
+java_download_path: /usr/local/src
+java_version: 8u91
+java_set_as_default: true
+java_set_as_latest: true
+
+java_versions:
+  7u79:
+    java_long_version: 1.7.0_79
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz
+  7u80:
+    java_long_version: 1.7.0_80
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+  8u74:
+    java_long_version: 1.8.0_74
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz
+  8u91:
+    java_long_version: 1.8.0_91
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-linux-x64.tar.gz
+  8u92:
+    java_long_version: 1.8.0_92
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+
+jce_versions:
+  '7':
+    jce_file_base: UnlimitedJCEPolicy
+    jce_download_url: http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip
+  '8':
+    jce_file_base: UnlimitedJCEPolicyJDK8
+    jce_download_url: http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
