@@ -50,6 +50,13 @@
     state: link 
   when: "{{ java_set_as_latest }}"
 
+- name: Configure Java to use /dev/urandom.
+  lineinfile:
+    dest="{{ java_real_home }}/jre/lib/security/java.security"
+    regexp="^securerandom.source="
+    line="securerandom.source=file:/dev/./urandom"
+  when: "{{ java_entropy_fix }}"
+
 - name: install crypto
   include: java-crypto.yml
   when: "{{ java_install_jce }}"

@@ -6,5 +6,6 @@ java_real_home: "{{ java_install_dir }}/jdk{{ java_versions[java_version].java_l
 
 jce_artifact_base: "{{ jce_versions[java_version[0:1]].jce_file_base }}"
 jce_artifact_name: "{{ jce_artifact_base }}.zip"
-jce_local_dir: "/tmp/jce{{ java_version[0:1] }}"
-jce_local_zip: "{{ jce_local_dir }}.zip }}"
+jce_temp_dir: "/tmp/jce{{ java_version[0:1] }}"
+jce_download_file: "{{ java_download_path }}/{{ jce_artifact_name }}"
+jce_zip_file: "{{ jce_temp_dir }}/{{ jce_artifact_name }}"

@@ -4,55 +4,39 @@
 # Unzips on the Ansible localhost machine
 # 
 
+- name: ensure the install dir _is_
+  file:
+    path: "{{ java_install_dir }}"
+    mode: 0755
+    owner: root
+    group: root
+    state: directory
+
 - name: download jce
   get_url:
     url:     "{{ jce_versions[java_version[0:1]].jce_download_url }}"
     headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
-    dest:    "{{ jce_local_zip }}"
+    dest:    "{{ jce_download_file }}"
   when: "{{ java_download_from_oracle }}"
-  run_once: true
-  delegate_to: 127.0.0.1
- 
-- name: remove temp folder
-  file: path={{ jce_local_dir }} state=absent
-  run_once: true
-  delegate_to: 127.0.0.1
 
-- name: create temp folder
-  file: path={{ jce_local_dir }} state=directory
-  run_once: true
-  delegate_to: 127.0.0.1
+- name: create temp folder for extraction
+  file: path={{ jce_temp_dir }} state=directory
 
 - name: unzip the policy file.
   unarchive:
-    src: "{{ jce_local_zip }}"
-    dest: "{{ jce_local_dir }}"
+    src: "{{ jce_download_file }}"
+    dest: "{{ jce_temp_dir }}"
     copy: no
-  run_once: true
-  delegate_to: 127.0.0.1
 
 - name: copy over files
-  copy: 
-    src="{{ jce_local_dir }}/{{ jce_artifact_base }}/{{ item }}" 
-    dest="{{ java_real_home }}/jre/lib/security/{{ item }}" 
-    mode=0644
+  command: cp -p {{ jce_temp_dir }}/{{ jce_artifact_base }}/{{ item }} {{ java_real_home }}/jre/lib/security/{{ item }} 
   with_items:
     - local_policy.jar
     - US_export_policy.jar
 
 - name: remove temp folder
-  file: path="{{ jce_local_dir }}" state=absent
-  run_once: true
-  delegate_to: 127.0.0.1
+  file: path="{{ jce_temp_dir }}" state=absent
 
-- name: remove zip file
-  file: path="{{ jce_local_zip }}" state=absent
-  run_once: true
-  delegate_to: 127.0.0.1
-
-- name: Configure Java to use /dev/urandom. 
-  lineinfile:
-    dest="{{ java_real_home }}/jre/lib/security/java.security"
-    regexp="^securerandom.source="
-    line="securerandom.source=file:/dev/./urandom"
-  when: "{{ java_entropy_fix }}"
+- name: remove downloaded folder
+  file: path="{{ jce_download_file }}" state=absent
+  when: "{{ java_remove_download }}"
