@@ -2,7 +2,7 @@ dependencies: []
 
 galaxy_info:
   author: Steve Taylor
-  description: An Ansible role for installing Oracle JDK and JCE on Redhat.
+  description: Ansible role for installing one (or more!) Oracle JDK homes, and JCE on Redhat.
   
   # issue_tracker_url: http://example.com/issue/tracker
   
