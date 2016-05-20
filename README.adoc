@@ -6,8 +6,6 @@ Finally, it can set the entropy fix for running on virtualized hardware.
 
 NOTE: This is just for RHEL, CentOS, EL. 
 
-TODO: This version just downloads to your local machines. Next version probably needs to handle the download flag = false.
-
 == Role Variables
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
@@ -32,7 +30,7 @@ Pull the files from Oracle? Implies you have accepted the license agreement.
 
   java_download_from_oracle: yes
 
-Where to locate the files on the local machines. Also where the files need to be if not downloaded.
+Where to locate the files on the local machines. Also where the files need to be if not downloaded. Set the 'java_download_from_oracle' flag if you have the correct files already placed.
 
   java_download_path: /usr/local/src
 
