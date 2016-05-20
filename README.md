@@ -8,7 +8,7 @@ NOTE: This is just for RHEL, CentOS, EL.
 
 ## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Variables and defaults follow.
 
 Install the Oracle JCE:
 
@@ -26,7 +26,7 @@ Clean up after yourself?
 
     java_remove_download: yes
 
-Pull the files from Oracle? Implies you have accepted the license agreement.
+Pull the files from Oracle? Saying yes implies you have accepted the license agreement!
 
     java_download_from_oracle: yes
 
@@ -34,7 +34,7 @@ Where to locate the files on the local machines. Also where the files need to be
 
     java_download_path: /usr/local/src
 
-Which version of course. Look to the defaults in the role for the dictionary of latest versions.
+Which version of course. Look to the defaults for the dictionary of latest versions.
 
     java_version: 8u91
 
