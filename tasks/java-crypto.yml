@@ -4,6 +4,9 @@
 # Unzips on the Ansible localhost machine
 # 
 
+- name: install unzip
+  yum: name=unzip state=latest
+
 - name: ensure the install dir _is_
   file:
     path: "{{ java_install_dir }}"
