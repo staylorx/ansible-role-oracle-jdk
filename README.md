@@ -1,4 +1,5 @@
-= Role Name
+Role Name
+----
 
 I needed a role that didn't rely on yum to install Oracle JDK. It's not pretty but sometimes I need multiple JAVA_HOMES. This role allows that. Additionally it can install the JCE, as well as set the alternatives, latest, and default symlinks.
 
@@ -6,7 +7,8 @@ Finally, it can set the entropy fix for running on virtualized hardware.
 
 NOTE: This is just for RHEL, CentOS, EL. 
 
-== Role Variables
+Role Variables
+-----
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
@@ -46,13 +48,15 @@ set the latest symlink?
 
   java_set_as_latest: true
 
-== Dependencies
+Dependencies
+----
 
 No dependencies on other roles.
 
 IMPORTANT: Using this role implies that you have accepted the Oracle license agreement to download the Oracle JDK and JCE. If you don't agree, don't use this role please.
 
-== Example Playbook
+Example Playbook
+----
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
@@ -75,7 +79,8 @@ Including an example of how to use your role (for instance, with variables passe
 
 ----
 
-== License
+License
+----
 
 MIT
 
