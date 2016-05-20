@@ -6,6 +6,10 @@ Finally, it can set the entropy fix for running on virtualized hardware.
 
 NOTE: This is just for RHEL, CentOS, EL. 
 
+To install,
+
+    sudo ansible-galaxy install staylorx.oracle-jdk
+
 ## Role Variables
 
 Variables and defaults follow.
