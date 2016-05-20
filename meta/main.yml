@@ -1,9 +1,7 @@
 galaxy_info:
   author: Steve Taylor
-  description: 
+  description: An Ansible role for installing Oracle JDK and JCE on Redhat.
   
-  # If the issue tracker for your role is not on github, uncomment the
-  # next line and provide a value
   # issue_tracker_url: http://example.com/issue/tracker
   
   license: MIT
