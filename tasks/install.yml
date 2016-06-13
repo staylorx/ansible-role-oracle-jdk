@@ -15,6 +15,10 @@
     group: root
     state: directory
 
+- name: check if the java_home exists
+  stat: path="{{ java_real_home }}"
+  register: java_real_home_check
+
 - name: unarchive the tarball
   unarchive:
     src: "{{ java_tar_file }}"
@@ -22,6 +26,7 @@
     owner: root
     group: root
     copy: no
+  when: not java_real_home_check.stat.isdir
 
 - block:
   - name: set alternatives
