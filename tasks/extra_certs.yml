@@ -1,0 +1,22 @@
+#
+# Sometimes we just have to add extra trusted certs to the keystore file
+# This is called in a loop from main
+#
+# This throws a WARNING for the reuse of the jdk_cert_var and item loop_var. I haven't quite got it dialed to remove the warning. But it is just a warning and this works.
+#
+
+- name: copy over the {{ jdk_cert_var.alias }} cert
+  copy:
+    src: "{{ jdk_cert_var.file }}"
+    dest: /tmp/{{ jdk_cert_var.alias }}.crt
+
+- name: import the cert
+  command: "{{ java_real_home}}/bin/keytool -importcert -alias {{ jdk_cert_var.alias }} -keystore {{ java_keystore }} -storepass {{ java_storepass }} -file /tmp/{{ jdk_cert_var.alias }}.crt -noprompt"
+  register: item_import
+  failed_when: "' already exists' not in item_import.stdout"
+
+- name: cleanup
+  file:
+    path: /tmp/{{ jdk_cert_var.alias }}.crt
+    state: absent
+

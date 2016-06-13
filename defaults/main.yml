@@ -3,7 +3,6 @@
 #
 # defaults file for roles/staylorx.oracle-jdk
 #
-java_home: /usr/java/local
 java_install_jce: false
 java_entropy_fix: false
 java_install_dir: /usr/java
@@ -14,6 +13,15 @@ java_download_path: /usr/local/src
 java_version: 8u91
 java_set_as_default: true
 java_set_as_latest: true
+
+# Extra certs that need to be loaded to make your place run right
+java_extra_certs: []
+#java_extra_certs:
+#  - { alias: some_cert_name, path: files/some_cert_name.crt }
+#  - { alias: some_cert_name2, path: files/some_cert_name2.crt }
+
+# Of course don't "changeit" unless you've already done so for real. Time-honoured password, this.
+java_storepass: changeit
 
 java_versions:
   7u79:
