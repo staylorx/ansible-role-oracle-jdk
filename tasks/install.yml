@@ -44,6 +44,7 @@
       path: "/usr/java/default"
       src: "{{ java_real_home }}"
       state: link 
+      force: yes
 
   when: "{{ java_set_as_default }}"
 #end block
@@ -53,6 +54,7 @@
     path: "/usr/java/latest"
     src: "{{ java_real_home }}"
     state: link 
+    force: yes
   when: "{{ java_set_as_latest }}"
 
 - name: Configure Java to use /dev/urandom.
