@@ -29,6 +29,15 @@
   when: not java_real_home_check.stat.isdir
 
 - block:
+
+  - name: fix weird file not found error
+    file: path="/var/lib/alternatives/{{ item }}" state=absent
+    with_items:
+      - java
+      - keytool
+      - javac
+      - javadoc
+
   - name: set alternatives
     alternatives:
       name="{{ item.exe }}"
