@@ -39,23 +39,30 @@
       - { path: "{{ java_real_home }}/jre/bin", exe: 'keytool' }
       - { path: "{{ java_real_home }}/bin", exe: 'javac' }
       - { path: "{{ java_real_home }}/bin", exe: 'javadoc' }
+
+  - name: ensure link is gone
+    file: path="/usr/java/default" state=absent
+
   - name: set default
     file:
       path: "/usr/java/default"
       src: "{{ java_real_home }}"
       state: link 
-      force: yes
 
   when: "{{ java_set_as_default }}"
 #end block
 
-- name: set default
-  file:
-    path: "/usr/java/latest"
-    src: "{{ java_real_home }}"
-    state: link 
-    force: yes
+- block:
+  - name: ensure link is gone
+    file: path="/usr/java/latest" state=absent
+
+  - name: set latest
+    file:
+      path: "/usr/java/latest"
+      src: "{{ java_real_home }}"
+      state: link
   when: "{{ java_set_as_latest }}"
+#end block
 
 - name: Configure Java to use /dev/urandom.
   lineinfile:
