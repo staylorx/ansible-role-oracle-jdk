@@ -39,6 +39,12 @@ java_versions:
   8u92:
     java_long_version: 1.8.0_92
     java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+  8u101:
+    java_long_version: 1.8.0_101
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz
+  8u102:
+    java_long_version: 1.8.0_92
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
 
 jce_versions:
   '7':
