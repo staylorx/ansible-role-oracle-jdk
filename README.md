@@ -46,9 +46,13 @@ Set the default symlink? Also fires off the alternatives routine.
 
     java_set_as_default: true
 
-set the latest symlink?
+Set the latest symlink?
 
     java_set_as_latest: true
+
+Want to install 32 bit Java? Defaults to linux-x64
+
+    java_architecture: linux-x586
 
 ## Dependencies
 
@@ -69,6 +73,7 @@ Including an example of how to use your role (for instance, with variables passe
         java_remove_download: yes
         java_download_from_oracle: yes
         java_version: 8u74
+        java_architecture: linux-x64
         java_set_as_default: yes
         java_set_as_latest: yes
       roles:
