@@ -22,29 +22,30 @@ java_extra_certs: []
 
 # Of course don't "changeit" unless you've already done so for real. Time-honoured password, this.
 java_storepass: changeit
+java_architecture: linux-x64
 
 java_versions:
   7u79:
     java_long_version: 1.7.0_79
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-{{ java_architecture }}.tar.gz
   7u80:
     java_long_version: 1.7.0_80
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/7u80-b15/jdk-7u80-{{ java_architecture }}.tar.gz
   8u74:
     java_long_version: 1.8.0_74
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u74-b02/jdk-8u74-{{ java_architecture }}.tar.gz
   8u91:
     java_long_version: 1.8.0_91
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-{{ java_architecture }}.tar.gz
   8u92:
     java_long_version: 1.8.0_92
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jdk-8u92-{{ java_architecture }}.tar.gz
   8u101:
     java_long_version: 1.8.0_101
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-{{ java_architecture }}.tar.gz
   8u102:
-    java_long_version: 1.8.0_92
-    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-linux-x64.tar.gz
+    java_long_version: 1.8.0_102
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-{{ java_architecture }}.tar.gz
 
 jce_versions:
   '7':
