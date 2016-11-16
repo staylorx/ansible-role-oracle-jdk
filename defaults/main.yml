@@ -46,6 +46,12 @@ java_versions:
   8u102:
     java_long_version: 1.8.0_102
     java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u102-b14/jdk-8u102-{{ java_architecture }}.tar.gz
+  8u111:
+    java_long_version: 1.8.0_111
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u111-b14/jdk-8u111-{{ java_architecture }}.tar.gz
+  8u112:
+    java_long_version: 1.8.0_112
+    java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u112-b14/jdk-8u112-{{ java_architecture }}.tar.gz
 
 jce_versions:
   '7':
