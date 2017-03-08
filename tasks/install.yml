@@ -48,6 +48,7 @@
       - { path: "{{ java_real_home }}/jre/bin", exe: 'keytool' }
       - { path: "{{ java_real_home }}/bin", exe: 'javac' }
       - { path: "{{ java_real_home }}/bin", exe: 'javadoc' }
+      - { path: "{{ java_real_home }}/bin", exe: 'jar' }
 
   - name: ensure link is gone
     file: path="/usr/java/default" state=absent
