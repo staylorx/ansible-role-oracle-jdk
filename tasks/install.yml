@@ -37,6 +37,7 @@
       - keytool
       - javac
       - javadoc
+      - jar
 
   - name: set alternatives
     alternatives:
