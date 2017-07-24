@@ -5,7 +5,7 @@
     url:     "{{ java_versions[java_version].java_download_url }}"
     headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
     dest:    "{{ java_tar_file }}"
-  when: "{{ java_download_from_oracle }}"
+  when: java_download_from_oracle
 
 - name: ensure the install dir _is_
   file:
@@ -28,6 +28,7 @@
     copy: no
   when: java_real_home_check.stat.isdir is not defined or not java_real_home_check.stat.isdir
 
+##### BLOCK START
 - block:
 
   - name: fix weird file not found error
@@ -60,9 +61,10 @@
       src: "{{ java_real_home }}"
       state: link 
 
-  when: "{{ java_set_as_default }}"
+  when: java_set_as_default
 #end block
 
+##### BLOCK START
 - block:
   - name: ensure link is gone
     file: path="/usr/java/latest" state=absent
@@ -72,7 +74,7 @@
       path: "/usr/java/latest"
       src: "{{ java_real_home }}"
       state: link
-  when: "{{ java_set_as_latest }}"
+  when: java_set_as_latest
 #end block
 
 - name: Configure Java to use /dev/urandom.
@@ -80,11 +82,11 @@
     dest="{{ java_real_home }}/jre/lib/security/java.security"
     regexp="^securerandom.source="
     line="securerandom.source=file:/dev/./urandom"
-  when: "{{ java_entropy_fix }}"
+  when: java_entropy_fix
 
 - name: install crypto
   include: java-crypto.yml
-  when: "{{ java_install_jce }}"
+  when: java_install_jce
 
 - name: clean up
   file:
@@ -92,4 +94,4 @@
     state: absent
   with_items:
     - "jdk-{{ java_version }}-linux-x64.tar.gz"
-  when: "{{ java_remove_download }}"
+  when: java_remove_download

@@ -5,7 +5,9 @@
 # 
 
 - name: install unzip
-  yum: name=unzip state=latest
+  yum: 
+    name: unzip
+    state: latest
 
 - name: ensure the install dir _is_
   file:
@@ -20,10 +22,12 @@
     url:     "{{ jce_versions[java_version[0:1]].jce_download_url }}"
     headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
     dest:    "{{ jce_download_file }}"
-  when: "{{ java_download_from_oracle }}"
+  when: java_download_from_oracle
 
 - name: create temp folder for extraction
-  file: path={{ jce_temp_dir }} state=directory
+  file: 
+    path: "{{ jce_temp_dir }}"
+    state: directory
 
 - name: unzip the policy file.
   unarchive:
@@ -38,8 +42,12 @@
     - US_export_policy.jar
 
 - name: remove temp folder
-  file: path="{{ jce_temp_dir }}" state=absent
+  file: 
+    path: "{{ jce_temp_dir }}"
+    state: absent
 
 - name: remove downloaded folder
-  file: path="{{ jce_download_file }}" state=absent
-  when: "{{ java_remove_download }}"
+  file: 
+    path: "{{ jce_download_file }}"
+    state: absent
+  when: java_remove_download
