@@ -1,0 +1,18 @@
+---
+#
+## Example to install Oracle Java SDK given that 'ansible-galaxy install staylorx.oracle-jdk' has been run.
+## 
+## Use implies acceptance of the Oracle license agreement.
+#
+
+- hosts: localhost
+  become: yes
+  become_user: root
+  vars:
+    java_install_jce: yes 
+    java_entropy_fix: yes
+    java_remove_download: yes
+    java_download_from_oracle: yes
+  roles:
+    - role: staylorx.oracle-jdk
+
