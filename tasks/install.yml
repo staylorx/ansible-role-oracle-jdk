@@ -86,7 +86,11 @@
 
 - name: install crypto
   include: java-crypto.yml
-  when: java_install_jce
+  when: java_install_jce and not java_crypto_policy is defined
+
+- name: set crypto.policy flag
+  include: java-crypto-policy.yml
+  when: java_install_jce and java_crypto_policy is defined
 
 - name: clean up
   file:

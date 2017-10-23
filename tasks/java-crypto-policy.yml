@@ -1,0 +1,13 @@
+
+#
+# Set the java crypto policy flag 
+# 
+
+- name: add/replace the crypto.policy setting
+  lineinfile:
+    path: "{{ java_real_home }}/jre/lib/security/java.security"
+    regexp: '^crypto.policy='
+    insertafter: '^#crypto.policy='
+    line: 'crypto.policy={{ java_crypto_policy }}'
+  
+

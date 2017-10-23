@@ -4,6 +4,13 @@ I needed a role that didn't rely on yum to install Oracle JDK. It's not pretty b
 
 Finally, it can set the entropy fix for running on virtualized hardware.
 
+CRYPTO CHANGE!
+The java_install_jce flag continues to set policy, however to use the new crypt.policy flag set the 'java_crypto_policy' variable also.
+
+Leaving the java_crypto_policy variable undefined (and setting java_install_jce to true) will install the JCE files as normal. Setting the java_crypto_policy variable will not install the files and will set the java.security crypto.policy setting so the policy folders will be used instead.
+
+Use of this role implies acceptance of Oracle's terms of service and licenses; Use of JCE and Cryptography imply acceptance and complete understanding of your cryptography rules and law governing use.
+
 NOTE: This is just for RHEL, CentOS, EL. 
 
 To install,
@@ -17,6 +24,10 @@ Variables and defaults follow.
 Install the Oracle JCE:
 
     java_install_jce: false
+
+Set the Oracle Crypto Policy (also requires the 'java_install_jce' flag be true):
+
+    java_crypto_policy: unlimited
 
 Sets the entropy source, securerandom.source=file:/dev/./urandom
 
@@ -76,6 +87,22 @@ Including an example of how to use your role (for instance, with variables passe
         java_architecture: linux-x64
         java_set_as_default: yes
         java_set_as_latest: yes
+      roles:
+        - role: staylorx.oracle-jdk
+
+## Another example Playbook
+
+This example show setting JCE by using the java.security file... and no files.
+
+    - hosts: servers
+      become: yes
+      become_user: root
+      vars:
+        java_install_jce: yes
+        java_crypto_policy: unlimited
+        java_entropy_fix: yes
+        java_remove_download: yes
+        java_download_from_oracle: yes
       roles:
         - role: staylorx.oracle-jdk
 
