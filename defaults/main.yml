@@ -10,7 +10,7 @@ java_remove_download: yes
 # like a safety, set to yes in the play
 java_download_from_oracle: no
 java_download_path: /usr/local/src
-java_version: 8u191
+java_version: 8u201
 java_set_as_default: true
 java_set_as_latest: true
 
@@ -91,6 +91,12 @@ java_versions:
   8u192:
     java_long_version: 1.8.0_192
     java_download_url: http://download.oracle.com/otn-pub/java/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jdk-8u192-{{ java_architecture }}.tar.gz
+  8u201:
+    java_long_version: 1.8.0_201
+    java_download_url: https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-{{ java_architecture }}.tar.gz
+  8u202:
+    java_long_version: 1.8.0_202
+    java_download_url: https://download.oracle.com/otn-pub/java/jdk/8u202-b08/1961070e4c9b4e26a04e7f5a083f551e/jdk-8u202-{{ java_architecture }}.tar.gz
 
 jce_versions:
   '7':
