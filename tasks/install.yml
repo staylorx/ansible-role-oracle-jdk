@@ -4,7 +4,7 @@
   get_url:
     url:     "{{ java_versions[java_version].java_download_url }}"
     headers: 
-      Cookie:"oraclelicense=accept-securebackup-cookie"
+      Cookie: oraclelicense=a
     dest:    "{{ java_tar_file }}"
   when: java_download_from_oracle
 
